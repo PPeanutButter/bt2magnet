@@ -1,5 +1,5 @@
 # bt2magnet
-> 将bt文件转化为磁力链接, 该仓库是[花生酱的家庭流媒体](https://github.com/PPeanutButter/HomeMediaServer)的组成部分。
+> 将bt文件转化为磁力链接。
 
 # usage
 ```shell
