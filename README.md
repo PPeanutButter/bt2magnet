@@ -3,18 +3,22 @@
 
 # usage
 ```shell
-usage: bt2magnet.py [-h] param
+usage: python bt2magnet [-h] [--param PARAM]
 
-positional arguments:
-  param       传入一个torrent的url、一个包含torrent文件的文件夹或者一个torrent文件
-
-optional arguments:
-  -h, --help  show this help message and exit
+options:
+  -h, --help     show this help message and exit
+  --param PARAM  传入一个torrent的url、一个包含torrent文件的文件夹或者一个torrent文件，默认为当前目录
 ```
+
 # sample
 ```shell
 // 文件夹
 > bt2magnet ./
+magnet:?xt=urn:btih:L43HY7TCCXURO2V6U47QOQPNRAFPS4LD
+magnet:?xt=urn:btih:AULDOGL7JYDPQXREI73PM5OR53RSIYKU
+magnet:?xt=urn:btih:5II7YGFGFO2UBDU4Q5O2YYEHTMZPM2SF
+// 默认./
+> bt2magnet
 magnet:?xt=urn:btih:L43HY7TCCXURO2V6U47QOQPNRAFPS4LD
 magnet:?xt=urn:btih:AULDOGL7JYDPQXREI73PM5OR53RSIYKU
 magnet:?xt=urn:btih:5II7YGFGFO2UBDU4Q5O2YYEHTMZPM2SF
@@ -28,4 +32,4 @@ magnet:?xt=urn:btih:L43HY7TCCXURO2V6U47QOQPNRAFPS4LD
 # build
 > 编译以省去`python bt2magnet.py`
 
-终端运行`pyinstaller -F .\bt2magnet.py`, 并将可执行文件添加到环境变量，或者下载编译好的`for Windows 64`和`for raspberry arm64 linux`
+终端运行`pyinstaller -F .\bt2magnet.py`, 并将可执行文件添加到环境变量
