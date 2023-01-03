@@ -1,5 +1,5 @@
 import os
-import argparse
+import sys
 
 
 def bt2magnet(torrent_file, file_name):
@@ -44,20 +44,22 @@ def copy():
 
 results = []
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--param', type=str, default="./", help='传入一个torrent的url、一个包含torrent文件的文件夹或者一个torrent文件，默认为当前目录')
-    args = parser.parse_args()
-    if str(args.param).startswith('http'):
+    param = sys.argv
+    if len(param) < 2:
+        param = "./"
+    else:
+        param = param[1]
+    if str(param).startswith('http'):
         import requests
-        r = requests.request(method='GET', url=args.param)
+        r = requests.request(method='GET', url=param)
         with open('.bt_cache', 'wb') as f:
             f.write(r.content)
-        print_copy(bt2magnet('.bt_cache', get_file_name(args.param, r.headers)))
-    elif os.path.isdir(args.param):
-        parent = args.param
+        print_copy(bt2magnet('.bt_cache', get_file_name(param, r.headers)))
+    elif os.path.isdir(param):
+        parent = param
         for name in os.listdir(parent):
             if name.endswith('.torrent') or name.endswith('.TORRENT'):
                 print_copy(bt2magnet(os.path.join(parent, name), name))
-    elif os.path.isfile(args.param):
-        print_copy(bt2magnet(args.param, os.path.basename(args.param)))
+    elif os.path.isfile(param):
+        print_copy(bt2magnet(param, os.path.basename(param)))
     copy()
