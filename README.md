@@ -1,5 +1,6 @@
 # bt2magnet
 > 将bt文件转化为磁力链接。
+> 请使用Go开发的多平台实现
 
 # usage
 ```shell
